@@ -102,13 +102,6 @@ img {
   overflow: hidden;
 }
 
-.card-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* center the cards horizontally */
-    margin-bottom: 1rem; /* add some margin between rows */
-  }
-
 .card:hover .card__image {
   filter: contrast(100%);
 }
@@ -179,14 +172,8 @@ img {
   <title></title>
 </head>
 <body>
-  <div class="card-container">
-  <?php
-    $i = 0; // initialize counter variable
-    foreach($campaigns as $campaign) {
-      if ($i % 4 === 0) { // start new row after every 4th card
-        echo '<div class="card-row">';
-      }
-  ?>
+  <ul class="cards">
+  <?php foreach($campaigns as $campaign){ ?>
     <li class="cards__item">
       <div class="card">
         <div class="card__image card__image--fence"></div>
@@ -197,17 +184,8 @@ img {
         </div>
       </div>
     </li>
-  <?php
-      $i++; // increment counter variable
-      if ($i % 4 === 0) { // end row after every 4th card
-        echo '</div>';
-      }
-    }
-    if ($i % 4 !== 0) { // end last row if there are fewer than 4 cards left
-      echo '</div>';
-    }
-  ?>
-</div>
+  <?php } ?>
+</ul>
 
 
 </body>

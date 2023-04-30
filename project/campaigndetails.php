@@ -1,194 +1,103 @@
+<?php  
+require 'config.php';
+    $campaignID = $_GET['campaignID'];
+    
+    if(empty($_SESSION["id"])){
+      // $id = $_SESSION["id"];
+      header("Location: signinup.php");
+    }
+
+    $sql = "SELECT * FROM campaign WHERE campaignID = '$campaignID'";
+
+    $result = mysqli_query($conn, $sql);
+
+    $campaign = mysqli_fetch_assoc($result);
+
+    //print_r($user);
+
+    mysqli_close($conn);
+
+?>
 
 
+<!DOCTYPE html>
+<html>
 <head>
-    <style type="text/css">
-        @gray-darker:               #444444;
-@gray-dark:                 #696969;
-@gray:                      #999999;
-@gray-light:                #cccccc;
-@gray-lighter:              #ececec;
-@gray-lightest:             lighten(@gray-lighter,4%);
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+      <link rel="stylesheet" type="text/css" href="campaigndetails.css">
 
-*,
-*::before,
-*::after { 
-  box-sizing: border-box;
-}
-
-html {
-  background-color: #f0f0f0;
-}
-
-body {
-  color: @gray;
-  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 1rem;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga" on;
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
-
-.btn {
-  background-color: white;
-  border: 1px solid @gray-light;
-  //border-radius: 1rem;
-  color: @gray-dark;
-  padding: 0.5rem;
-  text-transform: lowercase;
-}
-
-.btn--block {
-  display: block;
-  width: 100%;
-}
- 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cards__item {
-  display: flex;
-  padding: 1rem;
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3333%;
-  }
-}
-
-.card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  &:hover {
-    .card__image {
-      filter: contrast(100%);
-    }
-  }
-}
-
-.card__content {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.card__image {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
-  //filter: saturate(180%);
-  overflow: hidden;
-  position: relative;
-  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
-  &::before {
-    content: "";
-      display: block;
-    padding-top: 56.25%; // 16:9 aspect ratio
-  }
-  @media(min-width: 40rem) {
-    &::before {
-      padding-top: 66.6%; // 3:2 aspect ratio
-    }
-  }
-}
-
-.card__image--flowers {
-  background-image: url(https://unsplash.it/800/600?image=82);
-}
-
-.card__image--river {
-  background-image: url(https://unsplash.it/800/600?image=11);
-}
-
-.card__image--record {
-  background-image: url(https://unsplash.it/800/600?image=39);
-}
-
-.card__image--fence {
-  background-image: url(https://unsplash.it/800/600?image=59);
-}
-
-.card__title {
-  color: @gray-dark;
-  font-size: 1.25rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.card__text {
-  flex: 1 1 auto;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-
-    </style>
 </head>
+<body>
+ 
+  <nav class="flex-nav">
+  <div class="container">
+    <div class="grid menu">
+      <div class="column-xs-8 column-md-6">
+        <p id="highlight">Raise Up</p>
+      </div>
+      <div class="column-xs-4 column-md-6">
+        <a href="#" class="toggle-nav">Menu <i class="ion-navicon-round"></i></a>
+        <ul>
+          <li class="nav-item"><a href="homepage.php">Home</a></li>
+          <li class="nav-item"><a href="discovercampaigns.php">Discover Campaigns</a></li>
+          <li class="nav-item"><a href="profile.php">My Account</a></li>
+          <li class="nav-item"><a href="logout.php">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="container">
+    <div class="grid second-nav">
+      <div class="column-xs-12">
+        <nav>
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="discovercampaigns.php">Discover Campaigns</a></li>
+            <li class="breadcrumb-item active"><?php  echo htmlspecialchars($campaign['title']); ?></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="grid product">
+      <div class="column-xs-12 column-md-7">
+        <div class="product-gallery">
+          <div class="product-image">
+            <img class="active" src="<?php  echo htmlspecialchars($campaign['image']); ?>">
+          </div>
+          
+        </div>
+      </div>
+      <div class="column-xs-12 column-md-5">
+        <h1><?php  echo htmlspecialchars($campaign['title']); ?></h1>
+        <h2><?php  echo htmlspecialchars($campaign['currency']); ?><?php  echo htmlspecialchars($campaign['currentAmount']); ?> raised out of <?php  echo htmlspecialchars($campaign['currency']); ?><?php  echo htmlspecialchars($campaign['goalAmount']); ?></h2>
+        <div class="description">
+          <p><?php  echo htmlspecialchars($campaign['description']); ?></p>
+         
+        </div>
+            
+          <div class="progress" style="width: 700px; margin: 10px;">
+            <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+              <span id="current-progress"></span>
+            </div>
+          </div>
+          <form action="paymentform.php?campaignID=<?php echo $campaignID;?>" method="post">
 
-<ul class="cards">
-  <li class="cards__item">
-    <div class="card">
-      <div class="card__image card__image--fence"></div>
-      <div class="card__content">
-        <div class="card__title">Flex</div>
-        <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
-        <button class="btn btn--block card__btn">Button</button>
+        <button class="add-to-cart">Contribute</button>
+  </form>
       </div>
     </div>
-  </li>
-  <li class="cards__item">
-    <div class="card">
-      <div class="card__image card__image--river"></div>
-      <div class="card__content">
-        <div class="card__title">Flex Grow</div>
-        <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
-        <button class="btn btn--block card__btn">Button</button>
-      </div>
+  </div>
+</main>
+<footer>
+  <div class="grid">
+    <div class="column-xs-12">
+      <p class="copyright">&copy; Copyright 2023 <a href="" title=""  target="">Raise Up</a></p>
     </div>
-  </li>
-  <li class="cards__item">
-    <div class="card">
-      <div class="card__image card__image--record"></div>
-      <div class="card__content">
-        <div class="card__title">Flex Shrink</div>
-        <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
-        <button class="btn btn--block card__btn">Button</button>
-      </div>
-    </div>
-  </li>
-  <li class="cards__item">
-    <div class="card">
-      <div class="card__image card__image--flowers"></div>
-      <div class="card__content">
-        <div class="card__title">Flex Basis</div>
-        <p class="card__text">This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means "look at my width or height property."</p>
-        <button class="btn btn--block card__btn">Button</button>
-      </div>
-    </div>
-  </li>
-</ul>
+  </div>
+</footer>
+
+</body>
+</html>

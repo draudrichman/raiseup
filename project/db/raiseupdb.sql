@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3308
--- Generation Time: Apr 30, 2023 at 10:46 PM
+-- Generation Time: Apr 10, 2023 at 03:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -48,7 +48,7 @@ CREATE TABLE `campaign` (
 
 INSERT INTO `campaign` (`campaignID`, `userID`, `title`, `description`, `goalAmount`, `currentAmount`, `statusID`, `createdAt`, `updatedAt`, `categoryID`, `currency`, `image`) VALUES
 (3, 7, 'Raising Money for Saving Koalas', 'This is a critical effort to preserve one of the world\'s most iconic and beloved animals. These adorable creatures are facing extinction due to habitat loss, bushfires, and climate change. The funds raised will go towards the rescue, rehabilitation, and long-term conservation of koalas and their habitats. By supporting this cause, we can help provide essential medical care, support wildlife sanctuaries, and fund scientific research to better understand and protect these fascinating animals. Every donation can make a difference and help ensure that future generations will have the chance to appreciate the unique and valuable contributions of koalas to our planet.', 1000000, 0, 1, '2023-04-06 20:07:43', '2023-04-09 19:24:42', 1, '$', 'https://images.pexels.com/photos/1770706/pexels-photo-1770706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-(4, 12, 'Eco-Friendly Bamboo Toothbrushes for a Sustainable Future', 'Help us reduce plastic waste by backing our bamboo toothbrush campaign! Our toothbrushes are made from sustainable bamboo and come with replaceable heads, reducing plastic waste and promoting eco-friendliness.', 50000, 4200, 1, '2023-04-06 23:33:40', '2023-04-30 20:40:36', 1, '$', 'https://images.pexels.com/photos/3737587/pexels-photo-3737587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(4, 12, 'Eco-Friendly Bamboo Toothbrushes for a Sustainable Future', 'Help us reduce plastic waste by backing our bamboo toothbrush campaign! Our toothbrushes are made from sustainable bamboo and come with replaceable heads, reducing plastic waste and promoting eco-friendliness.', 50000, 0, 1, '2023-04-06 23:33:40', '2023-04-09 20:01:27', 1, '$', 'https://images.pexels.com/photos/3737587/pexels-photo-3737587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 (5, 8, 'Revolutionizing the Coffee Industry with Sustainable Coffee Pods', 'Join our mission to make coffee pods more sustainable! Our coffee pods are 100% biodegradable and compostable, ensuring that every cup of coffee you make has a minimal impact on the environment.', 52000, 0, 1, '2023-04-07 01:31:19', '2023-04-09 20:03:34', 2, '$', 'https://images.pexels.com/photos/14436226/pexels-photo-14436226.jpeg?auto=compress&cs=tinysrgb&w=1600'),
 (6, 10, 'Building Sustainable Homes for Low-Income Families', 'We\'re on a mission to build sustainable, energy-efficient homes for low-income families. Our homes will reduce energy costs and promote sustainable living, while providing families with a safe and comfortable place to live.', 500000, 0, 1, '2023-04-07 01:38:51', '2023-04-09 20:08:25', 1, '$', 'https://images.pexels.com/photos/325259/pexels-photo-325259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 (7, 7, 'Creating a Community Garden to Promote Sustainable Eating', 'Join us in creating a community garden that promotes sustainable eating and local food production. Our garden will provide fresh, organic produce to the community while reducing food waste and promoting sustainable agriculture practices.', 5000, 0, 1, '2023-04-07 01:48:07', '2023-04-09 20:11:15', 3, '$', 'https://images.pexels.com/photos/7658781/pexels-photo-7658781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
@@ -75,29 +75,6 @@ INSERT INTO `category` (`categoryID`, `categoryName`) VALUES
 (1, 'Charity Fundraising'),
 (2, 'Creative Projects'),
 (3, 'Content Creator and Artists');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `donation`
---
-
-CREATE TABLE `donation` (
-  `donationID` int(11) NOT NULL,
-  `campaignID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `amount` double NOT NULL,
-  `method` varchar(45) NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `paymentStatus` varchar(255) DEFAULT 'Completed'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `donation`
---
-
-INSERT INTO `donation` (`donationID`, `campaignID`, `userID`, `amount`, `method`, `createdAt`, `paymentStatus`) VALUES
-(3, 4, 3, 4200, 'Card', '2023-04-30 20:40:36', 'Completed');
 
 -- --------------------------------------------------------
 
@@ -154,28 +131,26 @@ CREATE TABLE `user_info` (
   `password` varchar(20) NOT NULL,
   `roleID` int(1) NOT NULL,
   `organization` varchar(50) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
-  `phone` bigint(15) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `address` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`id`, `name`, `username`, `email`, `password`, `roleID`, `organization`, `address`, `phone`, `image`) VALUES
-(1, 'saad', 'saad123', 'saad@gmail.com', '1234', 1, NULL, NULL, NULL, ''),
-(2, 'sakib', 'sakib75', 'sakib@gmail.com', '7575', 1, NULL, NULL, NULL, ''),
-(3, 'NGolo Kante', 'kante', 'kante@chelsea.com', 'chelsea123', 2, 'Chelsea FC', '25th avenue, london', 12345678, 'https://d.ibtimes.co.uk/en/full/1619969/ngolo-kante.jpg'),
-(5, 'NRG Ardiis', 'ardiis', 'ardiis@nrg.com', 'ardiis123', 1, NULL, NULL, NULL, ''),
-(7, 'Drich', 'admin', 'admin@raiseup.com', 'admin123', 3, '', '', NULL, ''),
-(8, 'johnathon trott', 'john', 'john@testing.com', 'john123', 1, NULL, NULL, NULL, ''),
-(9, 'Nrg Som', 'som', 'som@nrg.com', 'som123', 3, NULL, NULL, NULL, ''),
-(10, 'Sen Tenz', 'tenz', 'tenz@sentinels.com', 'tenz123', 1, NULL, NULL, NULL, ''),
-(12, 'Loud Aspas', 'aspas', 'aspas@loud.com', 'aspas123', 2, NULL, NULL, NULL, ''),
-(13, 'Idris Alba', 'idris', 'idris@theoffice.com', 'idris123', 1, NULL, NULL, NULL, ''),
-(14, 'after image', 'aft', 'aft@gmail.com', '123', 1, NULL, NULL, NULL, ''),
-(15, 'name', 'username', 'email', 'trial123', 1, 'organization', 'address', 0, '');
+INSERT INTO `user_info` (`id`, `name`, `username`, `email`, `password`, `roleID`, `organization`, `address`) VALUES
+(1, 'saad', 'saad123', 'saad@gmail.com', '1234', 1, NULL, NULL),
+(2, 'sakib', 'sakib75', 'sakib@gmail.com', '7575', 1, NULL, NULL),
+(3, 'NGolo Kante', 'Kante', 'kante@chelsea.com', 'chelsea123', 2, NULL, NULL),
+(5, 'NRG Ardiis', 'ardiis', 'ardiis@nrg.com', 'ardiis123', 1, NULL, NULL),
+(7, 'Drich', 'admin', 'admin@raiseup.com', 'admin123', 3, '', ''),
+(8, 'johnathon trott', 'john', 'john@testing.com', 'john123', 1, NULL, NULL),
+(9, 'Nrg Som', 'som', 'som@nrg.com', 'som123', 3, NULL, NULL),
+(10, 'Sen Tenz', 'tenz', 'tenz@sentinels.com', 'tenz123', 1, NULL, NULL),
+(12, 'Loud Aspas', 'aspas', 'aspas@loud.com', 'aspas123', 2, NULL, NULL),
+(13, 'Idris Alba', 'idris', 'idris@theoffice.com', 'idris123', 1, NULL, NULL),
+(14, 'after image', 'aft', 'aft@gmail.com', '123', 1, NULL, NULL),
+(15, 'trialname', 'trials', 'trial@trial.com', 'trial123', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -195,14 +170,6 @@ ALTER TABLE `campaign`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryID`);
-
---
--- Indexes for table `donation`
---
-ALTER TABLE `donation`
-  ADD PRIMARY KEY (`donationID`),
-  ADD KEY `campaignID` (`campaignID`),
-  ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `roles`
@@ -240,12 +207,6 @@ ALTER TABLE `category`
   MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `donation`
---
-ALTER TABLE `donation`
-  MODIFY `donationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
@@ -268,13 +229,6 @@ ALTER TABLE `campaign`
   ADD CONSTRAINT `campaign_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user_info` (`id`),
   ADD CONSTRAINT `fk_category` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
   ADD CONSTRAINT `statusfk` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
-
---
--- Constraints for table `donation`
---
-ALTER TABLE `donation`
-  ADD CONSTRAINT `donation_ibfk_1` FOREIGN KEY (`campaignID`) REFERENCES `campaign` (`campaignID`),
-  ADD CONSTRAINT `donation_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user_info` (`id`);
 
 --
 -- Constraints for table `user_info`

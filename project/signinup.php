@@ -2,7 +2,7 @@
 
   require 'config.php';
   if(!empty($_SESSION["id"])){
-    header("Location: index.php");
+    header("Location: campaigncreation.php");
   }
 
   // Checking Signin
@@ -23,15 +23,11 @@
         if ($row['roleName'] == "Admin") {
             header("Location: admindashboard.php");
         }
-        elseif ($row['roleName'] == "Donor") {
-            header("Location: Homepage.php");
+        else {
+            header("Location: homepage.php");
             
+
         }
-        elseif ($row['roleName'] == "Fundraiser") {
-            header("Location: CreateCampaign.php");
-            
-        }
-        
       }
       else{
         echo "<script> alert('Wrong Password'); </script>";
@@ -41,6 +37,7 @@
       echo "<script> alert('User Not Registered'); </script>";
     }
   }
+
 
   // Checking Sign Up
 
@@ -63,6 +60,7 @@
         
         // $query = "INSERT INTO user_info VALUES('','$name','$username','$email','$password')";
         $query = "INSERT INTO user_info (name, username, email, password, roleID) SELECT '$name', '$username', '$email', '$password', roleID FROM roles WHERE roleName = '$role'";
+        
         mysqli_query($conn, $query);
       
         echo "<script> alert('Registration Successful'); </script>";
@@ -79,11 +77,12 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <title>Sign In/Sign Up</title>
  </head>
 
  <body>
     <div>
-        <a href="signinup.php">
+        <a href="homepage.php">
             <img src="imgsrc//Raiseup-4.png" alt="Raise Up Logo" width="200" height="200" href>
         </a>
     </div>
