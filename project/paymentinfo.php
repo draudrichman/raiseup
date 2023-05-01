@@ -350,7 +350,11 @@ body {
     <div class="payment-details">
       <div class="total">
         <span class="category"><b>Amount:</b></span> 
-        <span class="price"><b>$40.92 CAD</b></span>
+<span class="price"><b>$<?php echo $donationAmount; ?></b></span>
+
+
+
+
       </div>
     </div>
     <button type="submit" name="paynow" >Complete Payment</button>

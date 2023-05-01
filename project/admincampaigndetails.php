@@ -7,11 +7,23 @@ require 'config.php';
       header("Location: signinup.php");
     }
 
-    $sql = "SELECT * FROM campaign WHERE campaignID = '$campaignID'";
+    $sql = "SELECT campaign.*, status.status FROM campaign JOIN status ON campaign.statusID = status.statusID WHERE campaignID = '$campaignID'";
 
     $result = mysqli_query($conn, $sql);
 
     $campaign = mysqli_fetch_assoc($result);
+    $status = $campaign['status'];
+
+    if (isset($_POST['suspend_campaign'])) {
+      $query = "UPDATE campaign SET statusID = (SELECT statusID FROM status WHERE status = 'Suspended') WHERE campaignID = $campaignID;";
+      mysqli_query($conn, $query);
+      header("Location: admincampaigndetails.php?campaignID=$campaignID");
+    }
+    else if (isset($_POST['activate_campaign'])) {
+      $query = "UPDATE campaign SET statusID = (SELECT statusID FROM status WHERE status = 'Active') WHERE campaignID = $campaignID;";
+      mysqli_query($conn, $query);
+      header("Location: admincampaigndetails.php?campaignID=$campaignID");
+    }
 
     //print_r($user);
 
@@ -71,9 +83,8 @@ require 'config.php';
         </div>
       </div>
       <div class="column-xs-12 column-md-5">
-        <h6><?php echo date('M d, Y', strtotime($campaign['createdAt'])); ?></h6>
         <h1><?php  echo htmlspecialchars($campaign['title']); ?></h1>
-        <h2><?php echo htmlspecialchars($campaign['currency']) . htmlspecialchars($campaign['currentAmount']) . " raised out of " . htmlspecialchars($campaign['currency']) . htmlspecialchars($campaign['goalAmount']); ?></h2>
+        <h2><?php  echo htmlspecialchars($campaign['currency']); ?><?php  echo htmlspecialchars($campaign['currentAmount']); ?> raised out of <?php  echo htmlspecialchars($campaign['currency']); ?><?php  echo htmlspecialchars($campaign['goalAmount']); ?></h2>
         <div class="description">
           <p><?php  echo htmlspecialchars($campaign['description']); ?></p>
          
@@ -84,10 +95,15 @@ require 'config.php';
               <span id="current-progress"></span>
             </div>
           </div>
-          <form action="paymentform.php?campaignID=<?php echo $campaignID;?>" method="post">
-
-        <button class="add-to-cart">Contribute</button>
-  </form>
+          <form action="" method="post">
+            <?php
+              if ($status == "Active") {
+                echo '<button class="add-to-cart" name="suspend_campaign">Suspend</button>';
+              } else if ($status == "Suspended") {
+                echo '<button class="add-to-cart" name="activate_campaign">Activate</button>';
+              }
+            ?>
+          </form>
       </div>
     </div>
   </div>

@@ -198,7 +198,9 @@ body{
 
   <button class="pulse">Edit Profile</button>
   </form>
+
 </div>
+
 <div class="wrapper">
     <div class="left">
         <img src="<?php  echo htmlspecialchars($user['image']); ?>" alt="user" height="150">
@@ -238,5 +240,6 @@ body{
       
     </div>
 </div>
+
 </body>
 </html>

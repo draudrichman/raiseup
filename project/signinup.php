@@ -2,7 +2,7 @@
 
   require 'config.php';
   if(!empty($_SESSION["id"])){
-    header("Location: campaigncreation.php");
+    header("Location: homepage.php");
   }
 
   // Checking Signin

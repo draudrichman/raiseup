@@ -200,8 +200,8 @@ input[type=search]:focus + button[type=submit] {
 				</div>
 
 				<div class="search-container">
-					<form action="#">
-						<input type="text" placeholder="Search...">
+<form action="discovercampaigns.php" method="get">
+<input type="text" name="searchTerm" placeholder="Search...">
 						<button type="submit"><i class="fa fa-search"></i></button>
 					</form>
 				</div>

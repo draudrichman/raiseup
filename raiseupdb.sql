@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3308
--- Generation Time: Apr 30, 2023 at 10:46 PM
+-- Generation Time: May 01, 2023 at 11:17 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,14 +47,17 @@ CREATE TABLE `campaign` (
 --
 
 INSERT INTO `campaign` (`campaignID`, `userID`, `title`, `description`, `goalAmount`, `currentAmount`, `statusID`, `createdAt`, `updatedAt`, `categoryID`, `currency`, `image`) VALUES
-(3, 7, 'Raising Money for Saving Koalas', 'This is a critical effort to preserve one of the world\'s most iconic and beloved animals. These adorable creatures are facing extinction due to habitat loss, bushfires, and climate change. The funds raised will go towards the rescue, rehabilitation, and long-term conservation of koalas and their habitats. By supporting this cause, we can help provide essential medical care, support wildlife sanctuaries, and fund scientific research to better understand and protect these fascinating animals. Every donation can make a difference and help ensure that future generations will have the chance to appreciate the unique and valuable contributions of koalas to our planet.', 1000000, 0, 1, '2023-04-06 20:07:43', '2023-04-09 19:24:42', 1, '$', 'https://images.pexels.com/photos/1770706/pexels-photo-1770706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-(4, 12, 'Eco-Friendly Bamboo Toothbrushes for a Sustainable Future', 'Help us reduce plastic waste by backing our bamboo toothbrush campaign! Our toothbrushes are made from sustainable bamboo and come with replaceable heads, reducing plastic waste and promoting eco-friendliness.', 50000, 4200, 1, '2023-04-06 23:33:40', '2023-04-30 20:40:36', 1, '$', 'https://images.pexels.com/photos/3737587/pexels-photo-3737587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-(5, 8, 'Revolutionizing the Coffee Industry with Sustainable Coffee Pods', 'Join our mission to make coffee pods more sustainable! Our coffee pods are 100% biodegradable and compostable, ensuring that every cup of coffee you make has a minimal impact on the environment.', 52000, 0, 1, '2023-04-07 01:31:19', '2023-04-09 20:03:34', 2, '$', 'https://images.pexels.com/photos/14436226/pexels-photo-14436226.jpeg?auto=compress&cs=tinysrgb&w=1600'),
-(6, 10, 'Building Sustainable Homes for Low-Income Families', 'We\'re on a mission to build sustainable, energy-efficient homes for low-income families. Our homes will reduce energy costs and promote sustainable living, while providing families with a safe and comfortable place to live.', 500000, 0, 1, '2023-04-07 01:38:51', '2023-04-09 20:08:25', 1, '$', 'https://images.pexels.com/photos/325259/pexels-photo-325259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(3, 7, 'Raising Money for Saving Koalas', 'This is a critical effort to preserve one of the world\'s most iconic and beloved animals. These adorable creatures are facing extinction due to habitat loss, bushfires, and climate change. The funds raised will go towards the rescue, rehabilitation, and long-term conservation of koalas and their habitats. By supporting this cause, we can help provide essential medical care, support wildlife sanctuaries, and fund scientific research to better understand and protect these fascinating animals. Every donation can make a difference and help ensure that future generations will have the chance to appreciate the unique and valuable contributions of koalas to our planet.', 1000000, 0, 1, '2023-04-06 20:07:43', '2023-05-01 16:48:39', 1, '$', 'https://images.pexels.com/photos/1770706/pexels-photo-1770706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(4, 12, 'Eco-Friendly Bamboo Toothbrushes for a Sustainable Future', 'Help us reduce plastic waste by backing our bamboo toothbrush campaign! Our toothbrushes are made from sustainable bamboo and come with replaceable heads, reducing plastic waste and promoting eco-friendliness.', 50000, 9800, 1, '2023-04-06 23:33:40', '2023-05-01 21:03:50', 1, '$', 'https://images.pexels.com/photos/3737587/pexels-photo-3737587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(5, 8, 'Revolutionizing the Coffee Industry with Sustainable Coffee Pods', 'Join our mission to make coffee pods more sustainable! Our coffee pods are 100% biodegradable and compostable, ensuring that every cup of coffee you make has a minimal impact on the environment.', 52000, 1234, 1, '2023-04-07 01:31:19', '2023-05-01 21:01:34', 2, '$', 'https://images.pexels.com/photos/14436226/pexels-photo-14436226.jpeg?auto=compress&cs=tinysrgb&w=1600'),
+(6, 10, 'Building Sustainable Homes for Low-Income Families', 'We\'re on a mission to build sustainable, energy-efficient homes for low-income families. Our homes will reduce energy costs and promote sustainable living, while providing families with a safe and comfortable place to live.', 500000, 0, 1, '2023-04-07 01:38:51', '2023-05-01 16:44:41', 1, '$', 'https://images.pexels.com/photos/325259/pexels-photo-325259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 (7, 7, 'Creating a Community Garden to Promote Sustainable Eating', 'Join us in creating a community garden that promotes sustainable eating and local food production. Our garden will provide fresh, organic produce to the community while reducing food waste and promoting sustainable agriculture practices.', 5000, 0, 1, '2023-04-07 01:48:07', '2023-04-09 20:11:15', 3, '$', 'https://images.pexels.com/photos/7658781/pexels-photo-7658781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 (8, 7, 'Education for All', 'Our mission is to provide education to underprivileged children in rural areas who lack access to quality education. With your donation, we can provide school supplies, books, and teachers to make a lasting impact on the lives of these children and help them reach their full potential. Join us in our efforts to make education accessible to all.', 40000, 0, 1, '2023-04-07 01:48:56', '2023-04-09 20:17:51', 3, '$', 'https://images.pexels.com/photos/11580454/pexels-photo-11580454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
 (22, 13, 'Team Seas - Cleaning up the Ocean, One Pound at a Time', 'Team Seas is a collaborative effort by environmental organizations, social media influencers, and concerned individuals to clean up the ocean by removing one pound of trash at a time. The campaign aims to raise awareness about the devastating impact of plastic waste on our oceans and marine life, while also funding research and development of new technologies to combat this issue. By joining forces, Team Seas hopes to create a global movement towards a cleaner, healthier ocean for all.', 1000000000, 0, 1, '2023-04-09 23:50:53', '2023-04-10 00:16:48', 1, '$', 'https://images.pexels.com/photos/3614167/pexels-photo-3614167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-(34, 13, 'Help Bring Clean Water to a Rural Village', 'Join us in our mission to bring clean and safe drinking water to a rural village in Africa. Lack of access to clean water is a major health issue for the people in this community, and with your help, we can make a difference. Our team has a plan to build a new well and filtration system that will provide access to clean water for generations to come.', 420000, 0, 1, '2023-04-10 00:15:59', '2023-04-10 00:15:59', 1, '$', 'https://images.pexels.com/photos/66346/pexels-photo-66346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+(34, 13, 'Help Bring Clean Water to a Rural Village', 'Join us in our mission to bring clean and safe drinking water to a rural village in Africa. Lack of access to clean water is a major health issue for the people in this community, and with your help, we can make a difference. Our team has a plan to build a new well and filtration system that will provide access to clean water for generations to come.', 420000, 0, 1, '2023-04-10 00:15:59', '2023-04-10 00:15:59', 1, '$', 'https://images.pexels.com/photos/66346/pexels-photo-66346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(36, 7, 'Support Our Local Farmers', 'This campaign seeks to support local farmers by providing them with financial assistance to help them continue their work. With the funds raised, the farmers can purchase new equipment and supplies, and expand their farms to increase production and provide fresh, healthy food to the community.', 10000, 1000, 1, '2023-05-01 14:42:38', '2023-05-01 17:19:23', 1, '$', 'https://images.pexels.com/photos/916406/pexels-photo-916406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(37, 7, 'Fund Research to Find a Cure for Cancer', 'This campaign is focused on raising funds for cancer research, which will help find new treatments and ultimately a cure for cancer. The campaign will bring hope to those affected by cancer and make a significant impact on the lives of millions of people around the world.', 250000, 5600, 1, '2023-05-01 14:43:42', '2023-05-01 20:01:37', 1, '$', 'https://images.pexels.com/photos/579474/pexels-photo-579474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(38, 7, 'Help Save the Planet, One Tree at a Time', 'This campaign focuses on raising awareness about environmental issues and planting trees to help combat climate change. The funds raised will be used to purchase and plant trees in deforested areas, which will provide oxygen, prevent soil erosion, and support wildlife habitats.', 8500, 0, 1, '2023-05-01 14:46:11', '2023-05-01 14:46:11', 1, '$', 'https://images.pexels.com/photos/6963530/pexels-photo-6963530.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,11 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`donationID`, `campaignID`, `userID`, `amount`, `method`, `createdAt`, `paymentStatus`) VALUES
-(3, 4, 3, 4200, 'Card', '2023-04-30 20:40:36', 'Completed');
+(3, 4, 3, 4200, 'Card', '2023-04-30 20:40:36', 'Completed'),
+(4, 36, 7, 1000, 'Card', '2023-05-01 14:47:55', 'Completed'),
+(5, 37, 3, 5600, 'MFS', '2023-05-01 20:01:37', 'Completed'),
+(6, 5, 5, 1234, 'Card', '2023-05-01 21:01:34', 'Completed'),
+(7, 4, 5, 5600, 'Card', '2023-05-01 21:03:50', 'Completed');
 
 -- --------------------------------------------------------
 
@@ -167,7 +174,7 @@ INSERT INTO `user_info` (`id`, `name`, `username`, `email`, `password`, `roleID`
 (1, 'saad', 'saad123', 'saad@gmail.com', '1234', 1, NULL, NULL, NULL, ''),
 (2, 'sakib', 'sakib75', 'sakib@gmail.com', '7575', 1, NULL, NULL, NULL, ''),
 (3, 'NGolo Kante', 'kante', 'kante@chelsea.com', 'chelsea123', 2, 'Chelsea FC', '25th avenue, london', 12345678, 'https://d.ibtimes.co.uk/en/full/1619969/ngolo-kante.jpg'),
-(5, 'NRG Ardiis', 'ardiis', 'ardiis@nrg.com', 'ardiis123', 1, NULL, NULL, NULL, ''),
+(5, 'NRG Ardiis', 'ardiis', 'ardiis@nrg.com', 'ardiis123', 1, 'NRG', '', 12345, 'https://cdn.oneesports.gg/cdn-data/2022/10/Valorant_Ardiis_Copenhagen2022_Feature.jpg'),
 (7, 'Drich', 'admin', 'admin@raiseup.com', 'admin123', 3, '', '', NULL, ''),
 (8, 'johnathon trott', 'john', 'john@testing.com', 'john123', 1, NULL, NULL, NULL, ''),
 (9, 'Nrg Som', 'som', 'som@nrg.com', 'som123', 3, NULL, NULL, NULL, ''),
@@ -231,7 +238,7 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `campaign`
 --
 ALTER TABLE `campaign`
-  MODIFY `campaignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `campaignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -243,7 +250,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `donationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `donationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `status`

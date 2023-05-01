@@ -4,111 +4,8 @@
     $id = $_SESSION["id"];
     header("Location: signinup.php");
   }
-if (isset($_GET['time'])) {
-  $time = $_GET['time'];
-} else {
-  $time = '';
-}
-      if ($time == "today") {
-        $query = "SELECT COUNT(*) AS count FROM campaign WHERE DATE(createdAt) = CURDATE()";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result); 
-        $campcount = (int) $data['count']; 
 
-
-        $query = "SELECT SUM(amount) AS sum FROM donation WHERE DATE(createdAt) = CURDATE()";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $amountraised = (int) $data['sum']; 
-
-
-        $query = "SELECT COUNT(*) AS count FROM donation WHERE DATE(createdAt) = CURDATE()";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $noofdonation = (int) $data['count']; 
-
-        if ($noofdonation == 0) {
-            $average = 0;
-        } else {
-            $average = intval($amountraised / $noofdonation);
-
-        }
-      } else if ($time == "yesterday") {
-        $query = "SELECT COUNT(*) AS count FROM campaign WHERE DATE(createdAt) = DATE(NOW()) - INTERVAL 1 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result); 
-        $campcount = (int) $data['count']; 
-
-
-        $query = "SELECT SUM(amount) AS sum FROM donation WHERE DATE(createdAt) = DATE(NOW()) - INTERVAL 1 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $amountraised = (int) $data['sum']; 
-
-
-        $query = "SELECT COUNT(*) AS count FROM donation WHERE DATE(createdAt) = DATE(NOW()) - INTERVAL 1 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $noofdonation = (int) $data['count']; 
-
-        if ($noofdonation == 0) {
-            $average = 0;
-        } else {
-            $average = intval($amountraised / $noofdonation);
-
-        }
-      } else if ($time == "sevendays") {
-        $query = "SELECT COUNT(*) AS count FROM campaign WHERE createdAt >= DATE(NOW()) - INTERVAL 7 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result); 
-        $campcount = (int) $data['count']; 
-
-
-        $query = "SELECT SUM(amount) AS sum FROM donation WHERE createdAt >= DATE(NOW()) - INTERVAL 7 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $amountraised = (int) $data['sum']; 
-
-
-        $query = "SELECT COUNT(*) AS count FROM donation WHERE createdAt >= DATE(NOW()) - INTERVAL 7 DAY";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $noofdonation = (int) $data['count']; 
-
-        if ($noofdonation == 0) {
-            $average = 0;
-        } else {
-            $average = intval($amountraised / $noofdonation);
-
-        }
-      } else {
-        $query = "SELECT COUNT(*) AS count FROM campaign";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result); 
-        $campcount = (int) $data['count']; 
-
-
-        $query = "SELECT SUM(amount) AS sum FROM donation";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $amountraised = (int) $data['sum']; 
-
-
-        $query = "SELECT COUNT(*) AS count FROM donation";
-        $result = mysqli_query($conn, $query);
-        $data = mysqli_fetch_assoc($result);
-        $noofdonation = (int) $data['count']; 
-
-        if ($noofdonation == 0) {
-            $average = 0;
-        } else {
-          $average = intval($amountraised / $noofdonation);
-        }
-      }
-
-
-
-  $sql = "SELECT campaignID, title, goalAmount, currentAmount FROM campaign ORDER BY currentAmount DESC LIMIT 8";
+  $sql = "SELECT title, goalAmount, currentAmount FROM campaign ORDER BY currentAmount DESC LIMIT 8";
   $result = mysqli_query($conn, $sql);
 
  ?>
@@ -125,22 +22,7 @@ if (isset($_GET['time'])) {
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="admindashboard.css">
-    <style type="text/css">
-      .timediv{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-      .timebutton {
-  margin-right: 10px;
-  font-size: 1.2em;
-  padding: 10px 20px;
-}
-
-
-    </style>
-    <title>Admin Dashboard</title>
+    <title>Admin - Users</title>
 
    </head>
 <body>
@@ -155,7 +37,7 @@ if (isset($_GET['time'])) {
             <span class="links_name">Dashboard</span>
           </a>
         </li>
-      
+       
         <li>
           <a href="admindashboardcampaigns.php">
             <i class='bx bx-box' ></i>
@@ -184,12 +66,11 @@ if (isset($_GET['time'])) {
         </li>
       </ul>
   </div>
-  
   <section class="home-section">
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Dashboard</span>
+        <span class="dashboard">Users</span>
       </div>
       <div class="search-box">
         <input type="text" placeholder="Search...">
@@ -202,51 +83,60 @@ if (isset($_GET['time'])) {
       </div>
     </nav>
 
-
     <div class="home-content">
-      <div class="timediv">
-        <a href="admindashboard.php?time=today"><button class = "timebutton">Today</button></a>
-        <a href="admindashboard.php?time=yesterday"><button class = "timebutton">Yesterday</button></a>
-        <a href="admindashboard.php?time=sevendays"><button class = "timebutton">Last 7 Days</button></a>
-        <a href="admindashboard.php"><button class = "timebutton">All Time</button></a>
-      </div>
-
-
-<div class="overview-boxes">
-
+      <div class="overview-boxes">
         <div class="box">
-
           <div class="right-side">
-            <div class="box-topic">Campaigns Launched</div>
+            <div class="box-topic">Total Active Campaigns</div>
             <div class="number">
-                <?php echo $campcount; ?>
+              <?php
+        $query = "SELECT COUNT(*) AS count FROM campaign";
+        $result = mysqli_query($conn, $query);
+        $data = mysqli_fetch_assoc($result);
+        echo number_format($data['count']);
+    ?>
             </div>
-           
+            <!-- <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div> -->
           </div>
+          <i class='bx bx-cart-alt cart'></i>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Amount Raised</div>
-            <div class="number"><?php echo "$" .$amountraised; ?></div>
-            
+            <div class="number">$0</div>
+            <!-- <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div> -->
           </div>
+          <i class='bx bxs-cart-add cart two' ></i>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Total Number of Donations</div>
-            <div class="number"><?php echo $noofdonation; ?></div>
-           
+            <div class="number">0</div>
+            <!-- <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div> -->
           </div>
+          <i class='bx bx-cart cart three' ></i>
         </div>
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Average Donation Amount</div>
-            <div class="number"><?php echo "$" .$average; ?></div>
-           
+            <div class="number">$0</div>
+            <!-- <div class="indicator">
+              <i class='bx bx-down-arrow-alt down'></i>
+              <span class="text">Down From Today</span>
+            </div> -->
           </div>
+          <i class='bx bxs-cart-download cart four' ></i>
         </div>
       </div>
-
 
       <div class="sales-boxes">
         <div class="recent-sales box">
@@ -308,14 +198,20 @@ if (isset($_GET['time'])) {
           <ul class="top-sales-details">
             
       
+          <li>
+            <a href="#">
+              <span class="product">Addidas Running Shoe</span>
+            </a>
+            <span class="price">$2345</span>
+          </li>
 
           <?php
       while($row = mysqli_fetch_assoc($result)) {
         $title = $row['title'];
-        $goal = $row['currentAmount'];
+        $goal = $row['goalAmount'];
     ?>
       <li>
-        <a href="admincampaigndetails.php?campaignID=<?php echo $row['campaignID']; ?>">
+        <a href="#">
           <span class="product"><?php echo $title; ?></span>
         </a>
         <span class="price">$<?php echo $goal; ?></span>
