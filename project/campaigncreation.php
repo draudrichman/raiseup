@@ -49,7 +49,7 @@
   
   <p class='field required'>
     <label class='label' for='login'>Goal</label>
-    <input class='text-input' id='login' name='goal' required type='number' placeholder="The amount of money the campaign is aiming to raise">
+    <input class='text-input' id='login' name='goal' required type='number' min = "0" placeholder="The amount of money the campaign is aiming to raise">
   </p>
 
   <div class='field'>

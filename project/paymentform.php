@@ -184,7 +184,7 @@ span.wpcf7-list-item {
 			<div style="width: 48%; float: right;">
 				<span class="wpcf7-form-control-wrap donation-amount">
     <span class="currency">$</span>
-    <input type="number" name="donationAmount" value="" size="45" class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required" aria-required="true" placeholder="Donation Amount" style="height: 40px; width: 300px;">
+    <input type="number" min = "0" name="donationAmount" value="" size="45" class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required" aria-required="true" placeholder="Donation Amount" style="height: 40px; width: 300px;">
 </span><br>
 
 			<h4>Select payment method: </h4>

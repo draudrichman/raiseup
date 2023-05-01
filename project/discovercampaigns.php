@@ -15,7 +15,7 @@
       $sql = 'SELECT campaignID, title, description, goalAmount, currentAmount, createdAt, currency, image FROM campaign WHERE statusID = 1';
 
   } else {
-    $sql = "SELECT campaignID, title, description, goalAmount, createdAt, currency, image 
+    $sql = "SELECT campaignID, title, description, currentAmount, goalAmount, createdAt, currency, image 
         FROM campaign 
         WHERE statusID = 1 AND title LIKE '%".$searchTerm."%'";
   }
